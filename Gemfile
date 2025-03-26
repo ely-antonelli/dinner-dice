@@ -60,7 +60,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-gem 'sassc-rails'
+gem 'sass-rails'
 gem "bootstrap", "~> 5.2"
 
 end
