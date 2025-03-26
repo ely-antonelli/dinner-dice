@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2025_03_26_121214) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,8 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_26_121214) do
   end
 
   create_table "fridge_ingredients", force: :cascade do |t|
-    t.integer "fridge_id", null: false
-    t.integer "ingredient_id", null: false
+    t.bigint "fridge_id", null: false
+    t.bigint "ingredient_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["fridge_id"], name: "index_fridge_ingredients_on_fridge_id"
@@ -59,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_26_121214) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "kitchen_id", null: false
+    t.bigint "kitchen_id", null: false
     t.index ["kitchen_id"], name: "index_fridges_on_kitchen_id"
   end
 
@@ -67,7 +70,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_26_121214) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_ingredients_on_category_id"
   end
 
@@ -75,13 +78,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_26_121214) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_kitchens_on_user_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
-    t.integer "recipe_id", null: false
-    t.integer "ingredient_id", null: false
+    t.bigint "recipe_id", null: false
+    t.bigint "ingredient_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
@@ -99,7 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_26_121214) do
 
   create_table "steps", force: :cascade do |t|
     t.text "description"
-    t.integer "recipe_id", null: false
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["recipe_id"], name: "index_steps_on_recipe_id"
