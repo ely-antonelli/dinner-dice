@@ -1,0 +1,116 @@
+.container-home {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  justify-content: center;
+}
+
+.title-home {
+  font-size: 30px;
+  text-align: center;
+  color: #144338;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.recipe-header {
+  display: flex;
+  flex-direction: column; /* Organise les éléments verticalement */
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  padding-top: 0;
+  margin-top: 0;
+  background: #B7E4C7;
+  position: relative;
+  min-height: 30vh; /* Assurer un espace pour le contenu */
+}
+
+.recipe-card-random {
+  width: 100%;
+  text-align: center;
+}
+
+.container-random-recipe {
+  background-color: #B7E4C7; /* Couleur de fond */
+  border-radius: 15px; /* Bordures arrondies */
+  border: 3px solid #144338;
+  border-radius: 8px;
+  width: 100%;
+  height: 40vh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+.recipe-instructions-random {
+  font-size: 16px;
+  text-align: left;
+  color: #144338;
+  margin-top: 10px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.dinner-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 5px;
+  top: 10px;
+  left: 10px;
+}
+
+.recipe-title-random {
+  font-size: 22px;
+  text-align: center;
+  justify-content: center;
+  color: #144338;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recipe-link-random {
+  margin-top: auto; /* Pousse le lien en bas */
+  margin-bottom: 0px;
+  display: inline-block;
+  padding: 10px 15px;
+  color: #144338;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.dinner-dice {
+  background-image: url("dice.jpg");
+  background-size: contain; /* L'image s'ajustera sans être tronquée */
+  background-repeat: no-repeat; /* Évite que l'image se répète si elle est plus petite que le conteneur */
+  width: 100px;
+  height: 100px;
+  border: none;
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: white;
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+}
+
+.reroll-container {
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.reroll {
+  font-size: 30px;
+  color: #144338;
+  line-height: 1.5;
+}

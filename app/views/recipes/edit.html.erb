@@ -1,0 +1,40 @@
+<%= form_with model: @recipe do |f| %>
+  <!-- Recipe Name -->
+    <legend class="step-title">Create Recipe</legend>
+  <fieldset>
+    <div class="form-group">
+      <%= f.label :title, "Recipe Name", class: "section-title" %>
+      <%= f.text_field :title, class: "form-control recipe-name" %>
+    </div>
+  </fieldset>
+
+    <!-- Instructions -->
+     <legend>Add Instructions</legend>
+       <fieldset>
+    <div class="form-group">
+      <%= f.label :instructions, "Instructions", { class: "section-title" } %>
+      <%= f.text_area :instructions, class: "form-control recipe-instructions", rows: 4 %>
+    </div>
+  </fieldset>
+
+  <!-- Ingredients by Category -->
+    <legend>Add ingredients</legend>
+    <% @categories.each do |category| %> <!-- Loop through categories -->
+      <fieldset>
+        <legend><%= category.name %></legend> <!-- Display the category name -->
+        <div class="form-group">
+          <% category.ingredients.each do |ingredient| %> <!-- Loop through ingredients in the category -->
+            <div>
+              <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_#{ingredient.id}" %>
+              <%= label_tag "recipe_ingredient_#{ingredient.id}", ingredient.name %>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
+    <% end %>
+
+  <!-- Submit Button -->
+  <div class="form-submit">
+    <%= f.submit "Save Recipe", class: "btn btn-primary" %>
+  </div>
+<% end %>

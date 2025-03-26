@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DinnerDice</title>
+    <title>Dinner Dice</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,21 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+   <body>
+    <div class="container mt-3 mb-3"> <!-- Container avec marges en haut et en bas -->
+      <div class="header">
+        <% if user_signed_in? %>
+          <%# <p>Hi, <span class="text-center"><%= current_user.email.split("@")[0].capitalize</span>!</p> %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
+
+        <%= render "layouts/navbar" %>
+      </div>
+
+      <%= yield %> <!-- Ici, le contenu de chaque page sera inséré -->
+    </div> <!-- Fin du container -->
   </body>
+  </div>
 </html>

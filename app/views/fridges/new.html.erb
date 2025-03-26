@@ -1,0 +1,47 @@
+<h1>Create a Fridge</h1>
+
+<%= form_with model: @fridge, url: fridges_path, method: :post, authenticity_token: true do |f| %>
+  <% @categories.each do |category| %>
+    <fieldset>
+      <legend><%= category.name %></legend>
+      <% category.ingredients.each do |ingredient| %>
+        <label>
+          <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient) %>
+          <%= ingredient.name %>
+        </label>
+      <% end %>
+    </fieldset>
+  <% end %>
+
+  <%= f.submit "Save my fridge" %>
+<% end %>
+
+
+<%# <div id="ingredients-container"></div>
+<button id="add-ingredient" type="button">Add Ingredient</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("ingredients-container");
+  const addIngredientButton = document.getElementById("add-ingredient");
+
+  addIngredientButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const index = Date.now();
+    const template = `
+      <div class="ingredient-field">
+        <label for="fridge_ingredients_attributes_${index}_name">Ingredient</label>
+        <input type="text" name="fridge[ingredients_attributes][${index}][name]" id="fridge_ingredients_attributes_${index}_name">
+        <button type="button" class="remove-ingredient">Remove</button>
+      </div>
+    `;
+    container.insertAdjacentHTML("beforeend", template);
+  });
+
+  container.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-ingredient")) {
+      event.target.closest(".ingredient-field").remove();
+    }
+  });
+});
+</script> %>

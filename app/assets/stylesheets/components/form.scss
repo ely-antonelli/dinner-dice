@@ -1,0 +1,93 @@
+.hidden {
+  display: none;
+}
+
+form fieldset {
+  border: 1px solid #144338;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #f0ead2;
+  border: 3px solid #144338;
+  border-radius: 8px;
+}
+
+form legend {
+  font-weight: bold;
+  font-size: 20px;
+  color: #144338;
+}
+
+.recipe-name {
+  width: 100%;
+  height: 40px;
+  border: 2px solid #144338;
+  border-radius: 8px;
+}
+
+.recipe-instructions {
+  width: 100%;
+  height: 300px;
+  border: 2px solid #144338;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+form fieldset .form-group {
+  display: flex;
+  flex-wrap: wrap; /* Permet de faire passer les ingrédients à la ligne si nécessaire */
+  gap: 15px; /* Espacement entre les ingrédients */
+  margin-bottom: 20px;
+  line-height: 0.5;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form .btn {
+  padding: 10px 20px;
+  background-color: #144338;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+form input[type="checkbox"] {
+  width: 18px;
+  height: 16px;
+  border: 3px solid black;
+  background-color: white;
+  border-radius: 4px;
+  appearance: none; /* Supprime le style par défaut */
+  outline: none; /* Retire l'outline lors du focus */
+}
+
+input[type="checkbox"]:checked {
+  background-color: #144338; /* Fond lorsque la case est cochée */
+  border-color: #ffffff; /* Changer la couleur de la bordure lorsque la case est cochée */
+}
+
+form label {
+  font-size: 15px;
+}
+
+.form-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.ingredients-section {
+  background-color: #B7E4C7; /* Choisis la couleur que tu préfères */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #144338;
+}

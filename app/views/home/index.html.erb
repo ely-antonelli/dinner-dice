@@ -1,0 +1,59 @@
+<div class="header-random-recipe">
+  <h1 class="title-home">What's for dinner tonight?</h1>
+</div>
+
+<div class="container-random-recipe">
+  <p><button id="random-recipe-btn" class="dinner-dice"></button></p>
+  <div id="random-recipe"></div>
+</div>
+
+<div class= "reroll-container">
+  <p>Not happy with that recipe?</p>
+  <p class="reroll"><strong>Reroll!</strong></p>
+</div>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("random-recipe-btn");
+  const recipeContainer = document.getElementById("random-recipe");
+
+  // Charger la première recette dès le chargement de la page
+  loadRandomRecipe();
+
+  // Fonction pour charger la recette
+  button.addEventListener("click", () => {
+    loadRandomRecipe();
+  });
+
+  // Fonction pour charger une recette aléatoire
+  function loadRandomRecipe() {
+    fetch("/recipes/random.json") // On précise bien .json
+      .then(response => response.json())
+      .then(data => {
+         console.log(data);
+        if (data.message) {
+          recipeContainer.innerHTML = `<p>${data.message}</p>`; // Afficher un message d'erreur si aucune recette n'est trouvée
+        } else {
+          recipeContainer.innerHTML = `
+          <div class="recipe-header">
+            <img src="/assets/icons/dinner-table.png" alt="dinner" class="dinner-icon">
+
+           <div class="recipe-card-random">
+            <h3 class="recipe-title-random">${data.title}</h3>
+             <p class="recipe-instructions-random">${data.instructions.slice(0, 100)} [...]</p>
+            </div>
+
+             <a href="/recipes/${data.id}" class="recipe-link-random">View recipe</a>
+          </div>
+          `;
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
+  }
+});
+</script>

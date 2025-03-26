@@ -1,0 +1,17 @@
+<h1>Create a Fridge</h1>
+
+<%= form_with model: @fridge, url: fridges_path, method: :post, authenticity_token: true do |f| %>
+  <% @categories.each do |category| %>
+    <fieldset>
+      <legend><%= category.name %></legend>
+      <% category.ingredients.each do |ingredient| %>
+        <label>
+          <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient) %>
+          <%= ingredient.name %>
+        </label>
+      <% end %>
+    </fieldset>
+  <% end %>
+
+  <%= f.submit "Save my fridge" %>
+<% end %>

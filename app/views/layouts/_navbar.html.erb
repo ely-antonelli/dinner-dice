@@ -1,0 +1,47 @@
+<div id="navbar-position" class="navbar navbar-expand-sm navbar">
+  <div class="container-fluid navbar-nav d-flex justify-content-center flex-row gap-3 width-100">
+    <div id="navbarSupportedContent">
+      <ul class="navbar-nav vw-100 d-flex justify-content-center flex-row">
+
+        <% if user_signed_in? %>
+
+           <li class="nav-item">
+            <%= link_to root_path, class: "nav-link" do %>
+              <%= image_tag "dice-home.png", alt: "icon", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to recipes_path, class: "nav-link" do %>
+               <%= image_tag "icons/recipe.png", alt: "icon", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to my_kitchen_path, class: "nav-link" do %>
+            <%= image_tag "icons/fridge.png", alt: "icon", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link", data: { turbo_method: :delete, confirm: "Are you sure you want to log out?" } do %>
+              <%= image_tag "icons/logout.png", alt: "icon", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+
+        <% else %>
+         <!-- Lien vers la page de login -->
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: "nav-link" do %>
+               <%= image_tag "icons/logout.png", alt: "icon", class: "navbar-icon" %>
+            <% end %>
+          </li>
+
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+

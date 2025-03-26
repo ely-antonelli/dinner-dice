@@ -1,0 +1,52 @@
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar {
+  justify-content: space-between;
+  background-color: white;
+  border: none !important;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  box-shadow: none !important;
+  outline: none !important; /* Supprime toute bordure de focus */
+}
+
+.nav-item {
+  margin-left: 8px;
+  margin-right: 8x;
+  margin-bottom: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-around; /* Ensure even spacing */
+  align-items: center;
+  width: 100%;
+  padding: 0; /* Remove any default padding */
+  margin: 0; /* Remove any default margin */
+}
+
+.nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar-icon {
+  width: 50px; /* Adjust the size as needed */
+  height: auto;
+  margin: 0; /* Ensure no margin */
+}
+
+.nav-link {
+  border: none;
+  padding: 0; /* Remove any default padding */
+}

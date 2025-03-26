@@ -1,0 +1,16 @@
+<h1>My fridge</h1>
+
+<% if @fridge.present? %>
+  <p>Voici les ingrédients de votre frigo :</p>
+  <ul>
+    <% @fridge.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Il n'y a aucun ingrédient dans votre frigo.</p>
+<% end %>
+
+<% if @fridge.present? %>
+  <%= link_to 'Edit my fridge', edit_fridge_path(@fridge) %>
+<% end %>

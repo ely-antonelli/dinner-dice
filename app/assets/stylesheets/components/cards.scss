@@ -1,0 +1,282 @@
+
+.title {
+  font-size: 30px;
+  text-align: center;
+  color: #144338;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+.title-category {
+  font-size: 20px;
+  text-align: left;
+  color: #144338;
+  font-weight: bold;
+  margin-top: 0px;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.recipe-card {
+  border: 3px solid #144338;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  background-color: #B7E4C7;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px !important;
+  margin: auto;
+  padding-left: 20px;
+}
+
+.header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%; /* Assure un bon alignement */
+  margin: 0; /* Supprime les marges par défaut */
+  padding: 0; /* Supprime les marges par défaut */
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.ingredients-container {
+  align-items: left;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: left;
+  color: #144338;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.ingredient-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #144338;
+  white-space: nowrap; /* Empêche le retour à la ligne */
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.ingredient-list {
+  font-style: italic;
+  flex: 1;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: black;
+  font-size: 16px;
+  list-style: none;
+}
+
+.ingredients-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.recipe-link-container {
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 0px;
+  margin-left: 0px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.recipe-title {
+  font-size: 25px;
+  text-align: center;
+  color: #144338;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.recipe-link {
+  display: block;
+  font-size: 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #144338;
+  font-weight: bold;
+  padding-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.new-recipe-container {
+  text-align: right;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.new-recipe {
+  color: #144338;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.recipe-icon {
+  width: 50px;   /* Ajuste la taille de l'icône */
+  height: 40px;
+  display: block; /* Force l'icône à être au-dessus */
+  margin: 0 auto 0; /* Centre et espace sous l'icône */
+}
+
+.recipe-container {
+  margin-top: 0px;
+}
+
+.recipe-title-show {
+  font-size: 30px;
+  text-align: center;
+  color: #144338;
+  font-weight: bold;
+}
+
+.recipe-ingredients-show {
+  font-size: 20px;
+  text-align: left;
+  color: #144338;
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #B7E4C7;
+  border: 3px solid #144338;
+  border-radius: 8px;
+  padding: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ingredients-header {
+  display: flex; /* Utilise flexbox pour aligner les éléments sur la même ligne */
+  align-items: center;
+}
+
+.ingredients-list-show {
+  display: flex; /* Utilise flexbox pour afficher les ingrédients en ligne */
+  flex-wrap: wrap; /* Permet au texte de passer à la ligne si nécessaire */
+}
+
+.ingredients-list-show ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ingredient-item {
+  list-style-type: none; /* Enlève les puces */
+  margin-right: 5px; /* Espace entre chaque ingrédient */
+  font-size: 16px; /* Taille de police des ingrédients */
+  font-weight: normal;
+  color: #144338;
+  font-style: italic;
+}
+
+.recipe-instructions-show {
+  font-size: 16px;
+  text-align: left;
+  color: #144338;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #B7E4C7;
+  border: 3px solid #144338;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-height: 50vh;
+  max-height: 100vh;
+}
+
+.btn-edit {
+  display: block;
+  font-size: 18px;
+  text-align: right;
+  text-decoration: none;
+  color: #144338;
+  font-weight: bold;
+  padding-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.kitchen-ingredients {
+  font-size: 16px;
+  text-align: left;
+  color: #144338;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  justify-content: center;
+  background-color: #B7E4C7;
+  border: 3px solid #144338;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 70vh;
+}
+
+.fridge-ingredients {
+  list-style: none;
+}
+
+.new-ingredient-link {
+  display: block;
+  font-size: 18px;
+  text-align: right;
+  text-decoration: none;
+  color: #144338;
+  font-weight: bold;
+  padding-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.ingredient-category {
+ margin-left: 20px;
+}
+
+.ingredient-item {
+  display: inline; /* Met les ingrédients sur la même ligne */
+  font-size: 16px;
+  margin-right: 0; /* Espacement entre les ingrédients */
+  margin-left: 0;
+}
+
+.category-icon {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+

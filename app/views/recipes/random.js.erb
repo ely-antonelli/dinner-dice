@@ -1,0 +1,20 @@
+<%# console.log("random.js.erb exécuté !");
+const outputDiv = document.querySelector("#random-recipe-output");
+
+if (<%= @random_recipe.present? ? 'true' : 'false' %>
+  <%# outputDiv.innerHTML = `
+    <h3><%= @random_recipe.title</h3>
+    <p><%= @random_recipe.instructions</p>
+    <h4>Ingrédients :</h4>
+    <ul>
+      <% @random_recipe.ingredients.each do |ingredient| %>
+        <%# <li><%= ingredient.name</li> %>
+      <%# <% end %>
+    <%# </ul>  %>
+  <%# `;
+  outputDiv.style.display = "block";
+} else {
+  console.log('Aucune recette trouvée');
+  outputDiv.innerHTML = "<p>Aucune recette trouvée.</p>";
+}
+ %>

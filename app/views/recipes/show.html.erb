@@ -1,0 +1,28 @@
+
+  <h1 class="recipe-title-show"><%= @recipe.title %></h1>
+    <%= link_to 'Edit Recipe', edit_recipe_path(@recipe), class: "btn-edit" %>
+
+  <div class= "recipe-container">
+
+  <div class="recipe-ingredients-show">
+    <div class="ingredients-header">
+      <%= image_tag "icons/vegetable-2.png", alt: "vegetables", class: "ingredients-icon" %>
+    <h3 class="section-title">Ingredients</h3>
+    </div>
+    <div class="ingredients-list-show">
+    <ul>
+      <% @ingredients.each_with_index do |ingredient, index| %>
+       <span class="ingredient-item">
+        <%= ingredient.name %>
+        <% if index < @ingredients.length - 1 %>,<% end %> <!-- Ajouter une virgule sauf après le dernier ingrédient -->
+      </span>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+
+  <div class="recipe-instructions-show">
+    <%= image_tag "icons/recipe-book-2.png", alt: "recipe-book", class: "recipe-icon" %>
+    <h3 class="section-title text-center py-1">Instructions</h3>
+    <p><%= simple_format(@recipe.instructions) %></p>
+  </div>
