@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['DATABASE_URL'] %>
+  database: dinner-dice_production
+  username: dinner-dice
+  password: <%= ENV['DINNER_DICE_DATABASE_PASSWORD'] %>
