@@ -63,9 +63,6 @@ group :development do
 gem 'sassc-rails'
 gem "bootstrap", "~> 5.2"
 
-
-
-
 end
 
 group :test do
@@ -75,4 +72,3 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-
