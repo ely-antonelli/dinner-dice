@@ -53,16 +53,15 @@ categories.each do |category_name, ingredients|
 
 # Vérifier si l'icône est déjà attachée
 unless category.icon.attached?
-  image_path = Rails.root.join('app', 'assets', 'images', 'category_icons', "#{category_name.downcase}.png")
-
-  if File.exist?(image_path)
-    category.icon.attach(io: File.open(image_path), filename: "#{category_name.downcase}.png", content_type: "image/png")
-    puts "✅ Image attached for category: #{category_name}"
+  file_path = Rails.root.join('app', 'assets', 'images', 'category_icons', "#{category_name.downcase}.png")
+  if File.exist?(file_path)
+    file = File.open(file_path)
+    category.icon.attach(io: file, filename: "#{category_name.downcase}.png", content_type: "image/png")
+    file.close
   else
-    puts "⚠️ Image not found for category: #{category_name}"
+    puts "⚠️ Icon file not found for category: #{category_name}"
   end
 end
-
 
   ingredients.each do |ingredient_name|
     Ingredient.create!(name: ingredient_name, category: category)

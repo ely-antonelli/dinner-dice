@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.message) {
           recipeContainer.innerHTML = `<p>${data.message}</p>`; // Afficher un message d'erreur si aucune recette n'est trouvée
         } else {
+          const dinnerIconPath = "<%= asset_path('icons/dinner-table.png') %>";
           recipeContainer.innerHTML = `
           <div class="recipe-header">
             <img src="/assets/icons/dinner-table.png" alt="dinner" class="dinner-icon">
