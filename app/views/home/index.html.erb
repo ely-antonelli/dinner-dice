@@ -2,7 +2,7 @@
   <h1 class="title-home">What's for dinner tonight?</h1>
 </div>
 
-<div class="container-random-recipe">
+<div class="container-random-recipe" data-dinner-icon-path="<%= asset_path('icons/dinner-table.png') %>">
   <p><button id="random-recipe-btn" class="dinner-dice"></button></p>
   <div id="random-recipe"></div>
 </div>
@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (data.message) {
           recipeContainer.innerHTML = `<p>${data.message}</p>`; // Afficher un message d'erreur si aucune recette n'est trouvée
         } else {
-          const dinnerIconPath = "<%= asset_path('icons/dinner-table.png') %>";
+          const dinnerIconPath = document.querySelector('.container-random-recipe').dataset.dinnerIconPath;
           recipeContainer.innerHTML = `
           <div class="recipe-header">
-            <img src="/assets/icons/dinner-table.png" alt="dinner" class="dinner-icon">
+            <img src="${dinnerIconPath}" alt="dinner" class="dinner-icon">
 
            <div class="recipe-card-random">
             <h3 class="recipe-title-random">${data.title}</h3>
