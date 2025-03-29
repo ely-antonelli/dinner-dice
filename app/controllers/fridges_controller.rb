@@ -56,6 +56,17 @@ class FridgesController < ApplicationController
     end
   end
 
+  def clear
+    @fridge = current_user.kitchen.fridge
+    if @fridge
+      @fridge.ingredients.destroy_all
+      redirect_to my_kitchen_path, notice: 'Fridge successfully cleared.'
+    else
+      redirect_to my_kitchen_path, alert: 'Fridge not found.'
+    end
+  end
+
+
   def update
     @fridge = current_user.kitchen&.fridge
     unless @fridge

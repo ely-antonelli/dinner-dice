@@ -259,7 +259,7 @@
 .new-ingredient-link {
   display: block;
   font-size: 18px;
-  text-align: right;
+  text-align: right !important;
   text-decoration: none;
   color: #144338;
   font-weight: bold;
@@ -269,6 +269,35 @@
   padding-left: 0px;
   margin-left: 0px;
 }
+
+.edit-ingredient-link {
+  display: block;
+  font-size: 18px;
+  text-align: right !important;
+  text-decoration: none;
+  color: #144338;
+  font-weight: bold;
+  padding-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+.clear-ingredient-link {
+  display: block;
+  font-size: 18px;
+  text-align: left !important;
+  text-decoration: none;
+  color: #144338;
+  font-weight: bold;
+  padding-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 0;
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
 
 .ingredient-category {
  margin-left: 20px;
@@ -286,4 +315,12 @@
   width: 40px;
   height: 40px;
   margin-right: 10px;
+}
+
+.fridge-container {
+  display: flex; /* Active flexbox */
+  margin-top: 20px; /* Espacement au-dessus */
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
 }

@@ -4,10 +4,7 @@ Rails.application.routes.draw do
   get "my_kitchen", to: "kitchens#show"
   get 'my_fridge', to: 'fridges#show', as: 'my_fridge'
   get "random_recipe", to: "recipes#random_recipe"
-
-  # get 'my_recipes', to: 'recipes#my_recipes'
-  # get 'my_recipes/:id', to: 'recipes#my_recipe', as: 'my_recipe'
-
+  get "/fridge/clear", to: "fridges#clear", as: :clear_fridge
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

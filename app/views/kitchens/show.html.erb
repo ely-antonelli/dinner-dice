@@ -1,10 +1,16 @@
 <%# <h1 class="title">What's in my fridge?</h1> %>
 
-<% if @fridge.present? %>
-    <%= link_to "Add an ingredient", edit_fridge_path(@fridge), class: "new-ingredient-link" %>
+<div class="fridge-container">
+  <% if @fridge.present? %>
+    <% if @fridge.ingredients.present? %>
+      <%= link_to "Clear My Fridge", clear_fridge_path, method: :delete, data: { confirm: "Are you sure?" }, class: "clear-ingredient-link" %>
+    <% end %>
+    <%= link_to "Add an ingredient", edit_fridge_path(@fridge), class: "edit-ingredient-link" %>
   <% else %>
-    <%= link_to "Add an ingredient", new_fridge_path, class: "new-ingredient-link" %>
+    <%= link_to "Add an ingredient", new_fridge_path, class: "new-ingredient-link text-end" %>
   <% end %>
+</div>
+
 
 <% if @fridge&.ingredients&.any? %>
   <div class="kitchen-container">
