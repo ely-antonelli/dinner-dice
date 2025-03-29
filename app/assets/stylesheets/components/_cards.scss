@@ -47,7 +47,8 @@
 }
 
 .ingredients-container {
-  align-items: left;
+  align-items: flex-start;
+  display: flex;
   gap: 10px;
   flex-wrap: wrap;
   padding-left: 5px;
@@ -73,9 +74,18 @@
   flex: 1;
   margin-bottom: 0;
   margin-top: 0;
+  margin-left: 10px;
   color: black;
   font-size: 16px;
   list-style: none;
+}
+
+.ingredient-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Espacement entre les éléments */
+  padding: 0;
+  margin: 0;
 }
 
 .ingredients-icon {

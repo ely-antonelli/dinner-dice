@@ -7,7 +7,7 @@
   <% @recipes.each_with_index do |recipe, index| %>
 
   <div class="recipe-card">
-    <div class="recipe-header">
+    <div class="header-card">
     <div class="recipe-container">
       <h3 class="recipe-title" style= "max-width: 90%;"><%= recipe.title %></h3>
       <%= form_with url: recipe_path(recipe), method: :delete, data: { confirm: "Voulez-vous vraiment supprimer cette recette ?" }, class: "delete-form" do %>
@@ -15,6 +15,7 @@
          <%= image_tag "icons/close.png", alt: "close", class: "delete-icon", onclick: "this.closest('form').submit();" %>
         <% end %>
    </div>
+    </div>
 
     <div class="ingredients-container">
       <%# <h3 class="ingredient-title">Ingredients :</h3> %>
