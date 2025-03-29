@@ -10,12 +10,11 @@
     <div class="recipe-header">
     <div class="recipe-container">
       <h3 class="recipe-title" style= "max-width: 90%;"><%= recipe.title %></h3>
-      <%= link_to recipe_path(recipe), method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' }, class: "delete-icon", remote: true do %>
-        <span>
-        <%= image_tag "icons/close.png", alt: "close", class: "delete-icon" %>
-        </span>
-      <% end %>
-  </div>
+      <%= form_with url: recipe_path(recipe), method: :delete, data: { confirm: "Voulez-vous vraiment supprimer cette recette ?" }, class: "delete-form" do %>
+       <%= submit_tag "", style: "display: none;" %>
+         <%= image_tag "icons/close.png", alt: "close", class: "delete-icon", onclick: "this.closest('form').submit();" %>
+        <% end %>
+   </div>
 
     <div class="ingredients-container">
       <%# <h3 class="ingredient-title">Ingredients :</h3> %>

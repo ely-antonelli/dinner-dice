@@ -1,16 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'kitchens/show'
-  get 'home/index'
-  get 'fridges/show'
-  get 'fridges/update'
-  get 'ingredients/index'
-  get 'ingredients/create'
-  get 'ingredients/destroy'
-  get 'recipes/index'
-  get 'recipes/show'
-  get 'recipes/random'
-  get 'recipes/destroy'
   get "kitchen", to: "kitchens#show"
   get "my_kitchen", to: "kitchens#show"
   get 'my_fridge', to: 'fridges#show', as: 'my_fridge'
@@ -28,7 +17,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  
+
   resources :recipes, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
     collection do
       get 'random', to: 'recipes#random', defaults: { format: :js }
