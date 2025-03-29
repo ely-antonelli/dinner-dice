@@ -6,7 +6,7 @@
         <% if user_signed_in? %>
 
            <li class="nav-item">
-            <%= link_to root_path, class: "nav-link" do %>
+            <%= link_to random_recipe_path, class: "nav-link" do %>
               <%= image_tag "dice-home.png", alt: "icon", class: "navbar-icon" %>
             <% end %>
           </li>
@@ -24,7 +24,7 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link", data: { turbo_method: :delete, confirm: "Are you sure you want to log out?" } do %>
+            <%= link_to destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link" do %>
               <%= image_tag "icons/logout.png", alt: "icon", class: "navbar-icon" %>
             <% end %>
           </li>
@@ -43,5 +43,3 @@
     </div>
   </div>
 </div>
-
-

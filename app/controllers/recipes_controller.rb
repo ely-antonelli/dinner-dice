@@ -7,6 +7,13 @@ class RecipesController < ApplicationController
     @random_recipe = Recipe.order("RANDOM()").first # Sélectionne une recette aléatoire
   end
 
+  # def random_recipe
+  #   if user_signed_in?
+  #     @random_recipe = Recipe.order("RANDOM()").first
+  #   else
+  #     redirect_to root_path, alert: "Veuillez vous connecter pour voir une recette aléatoire."
+  #   end
+
   def show
     @recipe = Recipe.find(params[:id])
     @ingredients = @recipe.ingredients
@@ -62,13 +69,13 @@ class RecipesController < ApplicationController
     fridge_ingredient_ids = current_user.fridge_ingredients.pluck(:id)
 
     if fridge_ingredient_ids.empty?
-      render json: { message: "Your fridge is empty!" } and return
+      render json: { message: "Your fridge is empty! Please, add ingredients to your fridge so we can find a recipe to match!" } and return
     end
 
     @random_recipe = Recipe.joins(:ingredients)
-                          .where(ingredients: { id: fridge_ingredient_ids })
-                          .distinct
-                          .sample
+                         .group("recipes.id")
+                         .having("COUNT(ingredients.id) = ?", Recipe.joins(:ingredients).where(ingredients: { id: fridge_ingredient_ids }).group("recipes.id").count.values.max)
+                         .sample
 
     if @random_recipe
       render json: {

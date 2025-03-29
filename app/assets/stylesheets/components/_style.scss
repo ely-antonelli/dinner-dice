@@ -1,0 +1,80 @@
+.title, .title-category, .container-home, .title-home {
+  font-size: 30px;
+  text-align: center;
+  color: #144338;
+  font-weight: bold;
+}
+
+.header-card, .delete-icon, .btn-submit, .btn-green {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  background-color: #b7e4c7;
+  text-align: center;
+}
+
+.container {
+  background-color: white;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 0;
+  justify-content: center;
+}
+
+body {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+
+h3 {
+  font-size: 25px;
+  text-align: left;
+  color: #144338;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+// .btn-submit {
+//   display: block;
+//   font-size: 18px;
+//   text-align: right;
+//   text-decoration: none;
+//   color: #144338;
+//   font-weight: bold;
+//   padding-top: 5px;
+//   margin-top: 2px;
+//   margin-bottom: 0;
+//   padding-left: 0px;
+//   margin-left: 0px;
+// }
+
+.btn-green {
+  background-color: #144338 !important;
+  color: white !important;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+}
+
+.random-message {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 30px;
+}

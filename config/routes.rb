@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "kitchen", to: "kitchens#show"
   get "my_kitchen", to: "kitchens#show"
   get 'my_fridge', to: 'fridges#show', as: 'my_fridge'
+  get "random_recipe", to: "recipes#random_recipe"
 
   # get 'my_recipes', to: 'recipes#my_recipes'
   # get 'my_recipes/:id', to: 'recipes#my_recipe', as: 'my_recipe'
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
+  
   resources :recipes, only: [:index, :show, :new, :create, :destroy, :edit, :update] do
     collection do
       get 'random', to: 'recipes#random', defaults: { format: :js }
