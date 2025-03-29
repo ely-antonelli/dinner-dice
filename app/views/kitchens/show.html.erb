@@ -6,33 +6,34 @@
     <%= link_to "Add an ingredient", new_fridge_path, class: "new-ingredient-link" %>
   <% end %>
 
-<div class= "kitchen-container">
-  <div class="kitchen-ingredients">
 <% if @fridge&.ingredients&.any? %>
+  <div class="kitchen-container">
+    <div class="kitchen-ingredients">
+      <% grouped_ingredients = @fridge.ingredients.group_by(&:category) %>
 
-  <% grouped_ingredients = @fridge.ingredients.group_by(&:category) %>
-
-  <% grouped_ingredients.each do |category, ingredients| %>
+      <% grouped_ingredients.each do |category, ingredients| %>
         <div class="category-container">
           <!-- Affichage de l'image de la catégorie -->
           <div class="category-icon">
             <%= image_tag category.icon, alt: "#{category.name} icon", class: "category-icon" if category.icon.attached? %>
-           <span class="title-category"><%= category.name %></span> <!-- Affiche le nom de la catégorie -->
+            <span class="title-category"><%= category.name %></span> <!-- Affiche le nom de la catégorie -->
           </div>
 
-    <ul class="ingredient-category">
-      <% ingredients.each_with_index do |ingredient, index| %>
-        <li class="ingredient-item">
-          <%= ingredient.name %><%= "," unless index == ingredients.length - 1 %> <!-- Ajoute une virgule sauf après le dernier élément -->
-        </li>
+          <ul class="ingredient-category">
+            <% ingredients.each_with_index do |ingredient, index| %>
+              <li class="ingredient-item">
+                <%= ingredient.name %><%= "," unless index == ingredients.length - 1 %> <!-- Ajoute une virgule sauf après le dernier élément -->
+              </li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
-  <% end %>
+    </div>
+  </div>
 <% else %>
-  <p class="random-message">You have no ingredients!</p>
+  <p class="null-message">You have no ingredients!</p>
 <% end %>
 
-</div>
 
 
 </div>

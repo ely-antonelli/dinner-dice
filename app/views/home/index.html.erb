@@ -1,9 +1,13 @@
 <h1 class= "title">Welcome on Dinner Dice!</h1>
-<p>Découvrez des recettes, organisez vos repas et trouvez de l'inspiration culinaire !</p>
+<div class= "null-message">
+<p>Create your own cookbook with your personal favorite recipes!</p>
+<p>Manage your fridge and find recipes with the ingredients you have!</p>
+<p>Don't know what to cook tonight? Let us help you with our random recipe generator!</p>
+</div>
 
 <% if user_signed_in? %>
-  <p>Vous êtes connecté ! Allez voir votre <%= link_to "recette aléatoire du jour", random_recipe_path, class: "btn btn-primary" %>.</p>
+  <p>You're already signed in! Check today's random recipe! <%= link_to "What's for dinner tonight?", random_recipe_path, class: "btn-green" %>.</p>
 <% else %>
-  <%= link_to "Se connecter", new_user_session_path, class: "btn-green" %>
-  <%= link_to "Créer un compte", new_user_registration_path, class: "btn btn-secondary" %>
+  <%= link_to "Sign in", new_user_session_path, class: "btn-green" %>
+  <%= link_to "Sign up", new_user_registration_path, class: "btn-green" %>
 <% end %>
