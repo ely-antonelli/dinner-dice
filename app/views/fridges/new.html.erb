@@ -11,37 +11,9 @@
     </fieldset>
   <% end %>
 
-  <div>
+  <div class="form-submit">
   <%= f.submit "Save my fridge", class: "btn-green" %>
   </div>
 <% end %>
 
 
-<%# <div id="ingredients-container"></div>
-<button id="add-ingredient" type="button">Add Ingredient</button>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("ingredients-container");
-  const addIngredientButton = document.getElementById("add-ingredient");
-
-  addIngredientButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    const index = Date.now();
-    const template = `
-      <div class="ingredient-field">
-        <label for="fridge_ingredients_attributes_${index}_name">Ingredient</label>
-        <input type="text" name="fridge[ingredients_attributes][${index}][name]" id="fridge_ingredients_attributes_${index}_name">
-        <button type="button" class="remove-ingredient">Remove</button>
-      </div>
-    `;
-    container.insertAdjacentHTML("beforeend", template);
-  });
-
-  container.addEventListener("click", (event) => {
-    if (event.target.classList.contains("remove-ingredient")) {
-      event.target.closest(".ingredient-field").remove();
-    }
-  });
-});
-</script> %>

@@ -1,13 +1,17 @@
 <h1 class= "title">Welcome on Dinner Dice!</h1>
+<div class= "welcome-card">
 <div class= "null-message">
 <p>Create your own cookbook with your personal favorite recipes!</p>
 <p>Manage your fridge and find recipes with the ingredients you have!</p>
 <p>Don't know what to cook tonight? Let us help you with our random recipe generator!</p>
 </div>
-
+</div>
 <% if user_signed_in? %>
-  <p>You're already signed in! Check today's random recipe! <%= link_to "What's for dinner tonight?", random_recipe_path, class: "btn-green" %>.</p>
+<div class= "null-message">
+  <p><strong>You're already signed in! Check today's random recipe!</strong></p>
+  <p><%= link_to "What's for dinner tonight?", random_recipe_path, class: "btn-green" %>.</p>
 <% else %>
   <%= link_to "Sign in", new_user_session_path, class: "btn-green" %>
   <%= link_to "Sign up", new_user_registration_path, class: "btn-green" %>
 <% end %>
+</div>
