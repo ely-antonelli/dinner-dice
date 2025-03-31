@@ -73,9 +73,11 @@ class RecipesController < ApplicationController
     end
 
     @random_recipe = Recipe.joins(:ingredients)
+                         .where(ingredients: { id: fridge_ingredient_ids })
                          .group("recipes.id")
-                         .having("COUNT(ingredients.id) = ?", Recipe.joins(:ingredients).where(ingredients: { id: fridge_ingredient_ids }).group("recipes.id").count.values.max)
-                         .sample
+                         .having("COUNT(ingredients.id) = (SELECT COUNT(*) FROM recipe_ingredients WHERE recipe_ingredients.recipe_id = recipes.id)")
+                         .order("RANDOM()") # PostgreSQL uniquement (sinon utiliser .sample en Ruby)
+                         .first
 
     if @random_recipe
       render json: {
