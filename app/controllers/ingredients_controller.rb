@@ -6,6 +6,8 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
+    @ingredient.user = current_user if current_user
+
 
     if @ingredient.save
       render json: @ingredient, status: :created

@@ -33,7 +33,7 @@
           <ul class="ingredient-category">
             <% ingredients.each_with_index do |ingredient, index| %>
               <li class="ingredient-item">
-                <%= ingredient.name %><%= "," unless index == ingredients.length - 1 %> <!-- Ajoute une virgule sauf après le dernier élément -->
+                <%= ingredient.name %><%= ", " unless index == ingredients.length - 1 %> <!-- Ajoute une virgule sauf après le dernier élément -->
               </li>
             <% end %>
           </ul>

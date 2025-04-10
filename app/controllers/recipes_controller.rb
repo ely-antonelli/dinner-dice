@@ -1,18 +1,11 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :destroy, :update]
+  before_action :set_recipe, only: [:edit, :update, :show, :destroy]
 
   def index
     @recipes = Recipe.where(user_id: current_user.id)
     @ingredients = @recipes.flat_map(&:ingredients).uniq
     @random_recipe = Recipe.order("RANDOM()").first # Sélectionne une recette aléatoire
   end
-
-  # def random_recipe
-  #   if user_signed_in?
-  #     @random_recipe = Recipe.order("RANDOM()").first
-  #   else
-  #     redirect_to root_path, alert: "Veuillez vous connecter pour voir une recette aléatoire."
-  #   end
 
   def show
     @recipe = Recipe.find(params[:id])
@@ -25,7 +18,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
     @categories = Category.includes(:ingredients).all
   end
 
@@ -100,7 +92,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :instructions, ingredient_names: [])
+    params.require(:recipe).permit(:title, :instructions, ingredient_ids: [])
   end
 
 

@@ -13,8 +13,7 @@
     <ul>
       <% @ingredients.each_with_index do |ingredient, index| %>
        <span class="ingredient-item">
-        <%= ingredient.name %>
-        <% if index < @ingredients.length - 1 %>,<% end %> <!-- Ajouter une virgule sauf après le dernier ingrédient -->
+         <%= ingredient.name %><%= ",&nbsp;".html_safe unless index == @ingredients.length - 1 %> <!-- Ajouter une virgule sauf après le dernier ingrédient -->
       </span>
       <% end %>
     </ul>

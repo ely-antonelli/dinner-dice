@@ -4,4 +4,6 @@ class Ingredient < ApplicationRecord
   has_many :recipes, through: :recipe_ingredients
   has_many :fridge_ingredients
   has_many :fridges, through: :fridge_ingredients
+  belongs_to :user, optional: true
+  validates :name, presence: true, uniqueness: { scope: :user_id }
 end
