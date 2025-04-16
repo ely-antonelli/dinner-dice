@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'my_fridge', to: 'fridges#show', as: 'my_fridge'
   get "random_recipe", to: "recipes#random_recipe"
   get "/fridge/clear", to: "fridges#clear", as: :clear_fridge
+  get '/custom_ingredients/:id', to: 'ingredients#destroy_custom', as: :delete_custom_ingredient
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -23,9 +24,7 @@ Rails.application.routes.draw do
 
   resources :ingredients, only: [:index, :create, :destroy]
 
-  resources :fridges, only: [:show, :update, :create, :new, :edit]
-
-  resources :fridges do
+  resources :fridges, only: [:show, :update, :create, :new, :edit] do
     post 'add_ingredient', on: :member
   end
 

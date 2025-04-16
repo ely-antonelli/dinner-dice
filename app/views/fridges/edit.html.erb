@@ -1,11 +1,12 @@
 <h1>Create a Fridge</h1>
 
-<%= form_with model: @fridge, url: fridges_path, method: :post, authenticity_token: true do |f| %>
-  <% @categories.each do |category| %>
-    <fieldset>
+<%= form_with model: @fridge, url: fridge_path(@fridge), method: :patch, local: true do |f| %>
+  <% @ingredients_by_category.each do |category, ingredients| %>
+    <% next if category.name == 'Other' %> <!-- Skip this one -->
+    <fieldset class="category-group">
       <legend><%= category.name %></legend>
-      <% category.ingredients.each do |ingredient| %>
-        <label>
+      <% ingredients.each do |ingredient| %>
+        <label class="ingredient-checkbox">
           <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient) %>
           <%= ingredient.name %>
         </label>
@@ -13,7 +14,36 @@
     </fieldset>
   <% end %>
 
+<fieldset class="custom-ingredients-section">
+  <legend>Other</legend>
+
+  <!-- Champ d'ajout d'ingrédient custom -->
+  <div class="field">
+    <%= label_tag :custom_ingredient, "Add your own custom ingredients" %>
+    <%= text_field_tag :custom_ingredient, nil, placeholder: "e.g. Nutella", class: "form-control" %>
+  </div>
+
+  <!-- Liste des ingrédients custom déjà créés -->
+  <% custom_ingredients = @fridge.ingredients.select { |i| i.custom? && i.user == current_user } %>
+  <% if custom_ingredients.any? %>
+    <ul class="custom-ingredients-list">
+      <% custom_ingredients.each do |ingredient| %>
+        <li class="custom-ingredient-item">
+          <label>
+            <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient) %>
+            <%= ingredient.name %>
+          </label>
+          <%= link_to '🗑️', delete_custom_ingredient_path(ingredient),
+                      method: :delete,
+                      data: { confirm: "Supprimer #{ingredient.name} ?" },
+                      class: "btn-delete" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</fieldset>
+
   <div class="form-submit">
-  <%= f.submit "Save my fridge", class: "btn-green" %>
+    <%= f.submit "Update my fridge", class: "btn-green" %>
   </div>
 <% end %>

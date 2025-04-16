@@ -1,6 +1,7 @@
 # Création des utilisateurs avec leurs cuisines et frigos
 users = [
-  { email: "ely@gmail.com", password: "dinner" }
+  { email: "ely@gmail.com", password: "dinner" },
+  { email: "poppy@gmail.com", password: "dinner" }
 ]
 
 users.each do |user_data|
@@ -33,7 +34,6 @@ categories = {
 "Fruits" => ["Apple", "Banana", "Orange", "Lemon", "Lime", "Grapefruit", "Mandarin", "Pear", "Peach", "Apricot", "Plum", "Cherry", "Strawberry", "Raspberry", "Blackberry", "Blueberry", "Grape", "Watermelon", "Cantaloupe", "Honeydew melon", "Pineapple", "Mango", "Papaya", "Kiwi", "Fig", "Pomegranate", "Coconut",
   "Date", "Persimmon", "Lychee", "Passion fruit", "Dragon fruit", "Guava", "Starfruit", "Cranberry", "Gooseberry", "Mulberry", "Currant", "Avocado"]
 
-"Custom Ingredients" => ["", ""]
 }
 
 category_objects = {}

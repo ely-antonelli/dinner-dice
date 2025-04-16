@@ -1,8 +1,8 @@
 <%= form_with model: @fridge, url: fridges_path, method: :post, authenticity_token: true do |f| %>
-  <% @categories.each do |category| %>
+  <% @ingredients_by_category.each do |category, ingredients| %>
     <fieldset>
       <legend><%= category.name %></legend>
-      <% category.ingredients.each do |ingredient| %>
+      <% ingredients.each do |ingredient| %>
         <label>
           <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient) %>
           <%= ingredient.name %>
@@ -11,9 +11,14 @@
     </fieldset>
   <% end %>
 
+  <!-- Champ d'ingrédient personnalisé -->
+  <div class="field">
+    <label for="custom_ingredient">Add a custom ingredient</label>
+    <%= text_field_tag :custom_ingredient, nil, placeholder: "e.g. Nutella", class: "form-control" %>
+  </div>
+
   <div class="form-submit">
-  <%= f.submit "Save my fridge", class: "btn-green" %>
+    <%= f.submit "Save my fridge", class: "btn-green" %>
   </div>
 <% end %>
-
 

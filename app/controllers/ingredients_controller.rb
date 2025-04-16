@@ -6,8 +6,6 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.user = current_user if current_user
-
 
     if @ingredient.save
       render json: @ingredient, status: :created
@@ -18,7 +16,26 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
+    if ingredient.custom?
+      redirect_to edit_fridge_path(current_user.kitchen.fridge), alert: "Utilise la suppression personnalisée."
+    else
+      redirect_to root_path, alert: "Impossible de supprimer un ingrédient standard."
+    end
+  end
+
+  def destroy_custom
+    ingredient = Ingredient.find_by(id: params[:id], custom: true, user: current_user)
+
+    if ingredient.custom? && ingredient.user == current_user
+      # On coupe les liens avec les frigos
+      ingredient.fridges.clear
+
+      # Puis on le détruit
+      ingredient.destroy
+      redirect_to edit_fridge_path(current_user.kitchen.fridge), notice: "Ingrédient personnalisé supprimé."
+    else
+      redirect_to edit_fridge_path(current_user.kitchen.fridge), alert: "Action non autorisée."
+    end
   end
 
   private
