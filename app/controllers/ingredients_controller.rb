@@ -30,6 +30,9 @@ class IngredientsController < ApplicationController
       # On coupe les liens avec les frigos
       ingredient.fridges.clear
 
+      # On coupe les liens avec les recettes
+      ingredient.recipes.clear
+
       # Puis on le détruit
       ingredient.destroy
       redirect_to edit_fridge_path(current_user.kitchen.fridge), notice: "Ingrédient personnalisé supprimé."

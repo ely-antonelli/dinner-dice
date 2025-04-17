@@ -99,7 +99,7 @@ class FridgesController < ApplicationController
 
   def clear
     if @fridge
-      @fridge.ingredients.destroy_all
+      @fridge.ingredients.clear
       redirect_to my_kitchen_path, notice: 'Frigo vidé avec succès.'
     else
       redirect_to my_kitchen_path, alert: 'Frigo introuvable.'

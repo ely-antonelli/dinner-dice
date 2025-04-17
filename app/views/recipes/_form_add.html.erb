@@ -21,10 +21,11 @@
   <!-- Ingredients by Category -->
     <legend>Add ingredients</legend>
     <% @categories.each do |category| %> <!-- Loop through categories -->
+    <% next if category.name == 'Other' %> <!-- Skip this one -->
       <fieldset>
         <legend><%= category.name %></legend> <!-- Display the category name -->
         <div class="form-group">
-          <% category.ingredients.each do |ingredient| %> <!-- Loop through ingredients in the category -->
+          <% category.ingredients.sort_by(&:name).each do |ingredient| %> <!-- Loop through ingredients in the category -->
             <div>
               <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_#{ingredient.id}" %>
               <%= label_tag "recipe_ingredient_#{ingredient.id}", ingredient.name %>
@@ -34,56 +35,27 @@
       </fieldset>
     <% end %>
 
+  <fieldset class="custom-ingredients-section">
+  <legend>Other (Custom Ingredients)</legend>
+
+  <% custom_ingredients = Ingredient.where(custom: true, user: current_user.id) %>
+
+  <% if custom_ingredients.any? %>
+    <div class="form-group">
+      <% custom_ingredients.each do |ingredient| %>
+        <div class="justify-content-start">
+          <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "custom_ingredient_#{ingredient.id}" %>
+          <%= label_tag "custom_ingredient_#{ingredient.id}", ingredient.name %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">You don't have any custom ingredients yet.</p>
+  <% end %>
+</fieldset>
+
   <!-- Submit Button -->
   <div class= "form-submit">
     <%= f.submit "Save Recipe", class: "btn-green" %>
   </div>
 <% end %>
-
-
-
-
-
-
-
-
- <%# <%= form_with model: @recipe do |f| %>
-   <%# <%= f.submit "Save Recipe" %>
-
-  <%# <div> %>
-    <%# <%= f.label :title, "Recipe name" %>
-    <%# <%= f.text_field :title %>
-  <%# </div> %>
-
-  <%# <div> %>
-    <%# <%= f.label :instructions %>
-    <%# <%= f.text_area :instructions %>
-  <%# </div> %>
-
-   <%# <div> %>
-    <%# <h3>Ingredients</h3> %>
-    <%# <% Ingredient.all.each do |ingredient| %>
-      <%# <div> %>
-       <%# <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient) %>
-        <%# <%= label_tag "recipe_ingredient_#{ingredient.id}", ingredient.name %>
-      <%# </div> %>
-    <%# <% end %>
-  <%# </div> %>
-<%# <% end %>
-
-
-<%# <%= form_with model: @recipe, url: recipes_path, method :post, authenticity_token: true do |f| %>
-  <%# <% @categories.each do |category| %>
-    <%# <fieldset>
-      <legend><%= category.name</legend>
-      <%# <% category.ingredients.each do |ingredient| %>
-        <%# <label> %>
-          <%# <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient) %>
-          <%# <%= ingredient.name %>
-        <%# </label> %>
-      <%# <% end %>
-    <%# </fieldset> %>
-  <%# <% end %>
-
-  <%# <%= f.submit "Save my fridge" %>
-<%# <% end %>

@@ -14,11 +14,14 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    @categories = Category.includes(:ingredients).all
+    @categories = Category.all
+    load_ingredients_by_category
   end
 
   def edit
-    @categories = Category.includes(:ingredients).all
+    @recipe = Recipe.find(params[:id])
+    @categories = Category.all
+    load_ingredients_by_category
   end
 
   def update
@@ -93,6 +96,16 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :instructions, ingredient_ids: [])
+  end
+
+  def load_ingredients_by_category
+    # On récupère uniquement les ingrédients visibles pour l'utilisateur
+    visible_ingredients = Ingredient
+      .includes(:category)
+      .where(custom: false)
+      .or(Ingredient.where(custom: true, user_id: current_user.id))
+
+    @ingredients_by_category = visible_ingredients.group_by(&:category)
   end
 
 

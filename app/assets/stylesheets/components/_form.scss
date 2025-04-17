@@ -4,7 +4,9 @@
 
 form fieldset {
   border: 1px solid #144338;
-  padding: 10px;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: 15px;
   background-color: #f0ead2;
   border: 3px solid #144338;
@@ -42,7 +44,7 @@ form fieldset .form-group {
   margin-bottom: 20px;
   line-height: 0.5;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .btn-submit {
@@ -65,7 +67,7 @@ input[type="submit"].btn-submit {
 form input[type="checkbox"] {
   width: 18px;
   height: 16px;
-  border: 3px solid black;
+  border: 2px solid #144338;
   background-color: white;
   border-radius: 4px;
   appearance: none; /* Supprime le style par défaut */
@@ -78,7 +80,7 @@ input[type="checkbox"]:checked {
 }
 
 form label {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .form-submit {
@@ -98,3 +100,34 @@ form label {
   font-weight: bold;
   color: #144338;
 }
+
+.btn-delete {
+  color:#144338;
+  font-weight: bold;
+  font-size: 12px;
+  align-items: center;
+}
+
+.custom-ingredient-grid {
+  margin-top: 20px;
+}
+
+.ingredient-checkbox {
+  padding-left: 5px;
+  border-radius: 8px;
+  transition: background 0.2s ease-in-out;
+}
+
+.ingredient-checkbox:hover {
+  background-color: #e2e6ea;
+}
+
+.form-check-input {
+  margin-right: 0.5rem;
+}
+
+// legend {
+//   font-weight: bold;
+//   font-size: 1.2rem;
+//   margin-bottom: 1rem;
+// }
