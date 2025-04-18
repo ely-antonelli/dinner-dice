@@ -5,16 +5,26 @@
 </div>
 
 <div class="container-random-recipe" data-dinner-icon-path="<%= asset_path('icons/dinner-table.png') %>">
-  <p><button id="random-recipe-btn" class="dinner-dice"></button></p>
-  <div id="random-recipe"></div>
-</div>
 
-<div class= "reroll-container">
-  <p>Not happy with that recipe?</p>
-  <p class="reroll"><strong>Reroll the dice!</strong></p>
-</div>
+  <div class="dice-wrapper">
+    <div id="dice-3d" class="cube">
+      <div class="face front">🥕</div>
+      <div class="face back">🍅</div>
+      <div class="face right">🥦</div>
+      <div class="face left">🌽</div>
+      <div class="face top">🥬</div>
+      <div class="face bottom">🧄</div>
+    </div>
+  </div>
 
-
+  <div id="random-recipe">
+  </div>
+  </div>
+  
+  <div class="reroll-container">
+    <p>Not happy with that recipe?</p>
+    <p class="reroll"><strong>Reroll the dice!</strong></p>
+  </div>
 <% else %>
   <p>Please, sign in to see a random recipe!</p>
   <%= link_to "Sign in", new_user_session_path, class: "btn btn-primary" %>
@@ -24,38 +34,39 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("random-recipe-btn");
+  const cube = document.getElementById("dice-3d");
   const recipeContainer = document.getElementById("random-recipe");
+  let x = 15, y = 25;
 
-  // Charger la première recette dès le chargement de la page
-  loadRandomRecipe();
+  function rollDiceAndFetch() {
+    // Tourne le dé
+    x += (Math.floor(Math.random() * 4) + 1) * 90;
+    y += (Math.floor(Math.random() * 4) + 1) * 90;
+    cube.style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
 
-  // Fonction pour charger la recette
-  button.addEventListener("click", () => {
-    loadRandomRecipe();
-  });
+    // Attend la fin de l'animation avant de charger la recette
+    setTimeout(() => {
+      loadRandomRecipe();
+    }, 1000);
+  }
 
-  // Fonction pour charger une recette aléatoire
   function loadRandomRecipe() {
-    fetch("/recipes/random.json") // On précise bien .json
+    fetch("/recipes/random.json")
       .then(response => response.json())
       .then(data => {
-         console.log(data);
         if (data.message) {
           recipeContainer.innerHTML = `<p class="random-message">${data.message}</p>`;
         } else {
           const dinnerIconPath = document.querySelector('.container-random-recipe').dataset.dinnerIconPath;
           recipeContainer.innerHTML = `
-          <div class="recipe-header">
-            <img src="${dinnerIconPath}" alt="dinner" class="dinner-icon">
-
-           <div class="recipe-card-random">
-            <h3 class="recipe-title-random">${data.title}</h3>
-             <p class="recipe-instructions-random">${data.instructions.slice(0, 100)} [...]</p>
+            <div class="recipe-header">
+              <img src="${dinnerIconPath}" alt="dinner" class="dinner-icon">
+              <div class="recipe-card-random">
+                <h3 class="recipe-title-random">${data.title}</h3>
+                <p class="recipe-instructions-random">${data.instructions.slice(0, 100)} [...]</p>
+              </div>
+              <a href="/recipes/${data.id}" class="recipe-link-random">View recipe</a>
             </div>
-
-             <a href="/recipes/${data.id}" class="recipe-link-random">View recipe</a>
-          </div>
           `;
         }
       })
@@ -63,5 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Error:", error);
       });
   }
+
+  // Lancer dès le chargement
+  rollDiceAndFetch();
+
+  // Clic sur le dé = relancer
+  cube.addEventListener("click", () => {
+    rollDiceAndFetch();
+  });
 });
 </script>

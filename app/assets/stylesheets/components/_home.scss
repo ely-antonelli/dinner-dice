@@ -6,12 +6,11 @@
 }
 
 .welcome-card {
-  background-color: #B7E4C7;
-  border-radius: 15px;
-  border: 3px solid #144338;
+  background-color: #b8f2e6;
+  border: 3px solid #edf6f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: auto;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: auto;
   margin-top: 20px;
   padding-top: 0;
@@ -25,8 +24,8 @@
   text-align: center;
   color: #144338;
   font-weight: bold;
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .recipe-header {
@@ -34,11 +33,10 @@
   flex-direction: column; /* Organise les éléments verticalement */
   justify-content: flex-end;
   align-items: center;
-  border-radius: 8px;
   padding: 15px;
-  padding-top: 0;
+  padding-top: 8px;
   margin-top: 0;
-  background: #B7E4C7;
+  background: #b8f2e6;
   position: relative;
   height: auto;
 }
@@ -50,13 +48,11 @@
 }
 
 .container-random-recipe {
-  background-color: #B7E4C7; /* Couleur de fond */
-  border-radius: 15px; /* Bordures arrondies */
-  border: 3px solid #144338;
-  border-radius: 8px;
+  background-color: #b8f2e6;
+  border: 3px solid #edf6f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: auto;
 }
 
@@ -73,8 +69,8 @@
   width: 50px;
   height: 50px;
   margin-right: 5px;
-  top: 10px;
-  left: 10px;
+  top: 5px;
+  left: 5px;
 }
 
 .recipe-title-random {
@@ -100,20 +96,20 @@
   transition: background-color 0.3s;
 }
 
-.dinner-dice {
-  background-image: url("dice.jpg");
-  background-size: contain; /* L'image s'ajustera sans être tronquée */
-  background-repeat: no-repeat; /* Évite que l'image se répète si elle est plus petite que le conteneur */
-  width: 80px;
-  height: 80px;
-  border: none;
-  margin-left: 20px;
-  margin-top: 20px;
-  background-color: white;
-  position: absolute;
-  right: 10px;
-  bottom: 20px;
-}
+// .dinner-dice {
+//   // background-image: url("dice.jpg");
+//   // background-size: contain; /* L'image s'ajustera sans être tronquée */
+//   // background-repeat: no-repeat; /* Évite que l'image se répète si elle est plus petite que le conteneur */
+//   // width: 80px;
+//   // height: 80px;
+//   border: none;
+//   // // margin-left: 20px;
+//   // // margin-top: 20px;
+//   // // background-color: white;
+//   position: absolute;
+//   right: 10px;
+//   bottom: 20px;
+// }
 
 .reroll-container {
   justify-content: center;
@@ -122,9 +118,65 @@
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  gap: 10px;
 }
 
-.reroll {
-  font-size: 25px;
-  color: #144338;
+
+.dice-wrapper {
+  // perspective: 800px;
+  width: 70px;
+  height: 70px;
+  margin: auto;
+  cursor: pointer;
+  position: fixed;
+  z-index: 1; /* Assure que le cube est au-dessus du fond */
+  top: 75%; /* Centrer verticalement */
+  left: 45%; /* Centrer horizontalement */
+  transform: translate(-50%, -50%); /* Ajuster pour centrer le cube */
+  transition: transform 0.6s ease;
+}
+
+.cube {
+  width: 70px;
+  height: 70px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+  transform: rotateX(15deg) rotateY(15deg);
+  position: absolute;
+  top: 100%; /* Place le cube immédiatement en dessous de son conteneur parent */
+  left: 50%;
+}
+
+.face {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: #b8f2e6;
+  border: 3px solid #edf6f9;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+/* Positionnement des faces */
+.front  { transform: rotateY(  0deg) translateZ(35px); }
+.back   { transform: rotateY(180deg) translateZ(35px); }
+.right  { transform: rotateY( 90deg) translateZ(35px); }
+.left   { transform: rotateY(-90deg) translateZ(35px); }
+.top    { transform: rotateX( 90deg) translateZ(35px); }
+.bottom { transform: rotateX(-90deg) translateZ(35px); }
+
+@keyframes roll {
+  0% { transform: rotateX(15deg) rotateY(25deg); }
+  50% { transform: rotateX(180deg) rotateY(360deg); }
+  100% { transform: rotateX(15deg) rotateY(25deg); }
+}
+
+.roll {
+  animation: roll 0.3s ease;
 }

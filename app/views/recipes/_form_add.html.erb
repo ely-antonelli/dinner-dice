@@ -1,19 +1,17 @@
 
 <%= form_with model: @recipe do |f| %>
   <!-- Recipe Name -->
-    <legend class="step-title">Create Recipe</legend>
   <fieldset>
+    <legend class="step-title">Create Recipe</legend>
     <div class="form-group">
-      <%= f.label :title, "Recipe Name", class: "section-title" %>
       <%= f.text_field :title, class: "form-control recipe-name" %>
     </div>
   </fieldset>
 
     <!-- Instructions -->
-     <legend>Add Instructions</legend>
        <fieldset>
+     <legend>Add Instructions</legend>
     <div class="form-group">
-      <%= f.label :instructions, "Instructions", { class: "section-title" } %>
       <%= f.text_area :instructions, class: "form-control recipe-instructions", rows: 4 %>
     </div>
   </fieldset>

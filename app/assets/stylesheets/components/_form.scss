@@ -3,14 +3,13 @@
 }
 
 form fieldset {
-  border: 1px solid #144338;
   padding: 15px;
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 15px;
-  background-color: #f0ead2;
-  border: 3px solid #144338;
-  border-radius: 8px;
+  background-color: #b8f2e6;
+  border: 3px solid #edf6f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 form legend {
@@ -23,14 +22,14 @@ form legend {
   width: 100%;
   height: 40px;
   border: 2px solid #144338;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .recipe-instructions {
   width: 100%;
   height: 300px;
   border: 2px solid #144338;
-  border-radius: 8px;
+  border-radius: 2px;
 }
 
 .form-group {
@@ -40,7 +39,7 @@ form legend {
 form fieldset .form-group {
   display: flex;
   flex-wrap: wrap; /* Permet de faire passer les ingrédients à la ligne si nécessaire */
-  gap: 15px; /* Espacement entre les ingrédients */
+  gap: 10px; /* Espacement entre les ingrédients */
   margin-bottom: 20px;
   line-height: 0.5;
   align-items: center;
@@ -65,8 +64,8 @@ input[type="submit"].btn-submit {
 }
 
 form input[type="checkbox"] {
-  width: 18px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: 2px solid #144338;
   background-color: white;
   border-radius: 4px;
@@ -80,7 +79,9 @@ input[type="checkbox"]:checked {
 }
 
 form label {
-  font-size: 13px;
+  font-size: 14px;
+  align-items: center;
+  text-align: center;
 }
 
 .form-submit {
@@ -96,9 +97,10 @@ form label {
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #144338;
+  margin: 0;
 }
 
 .btn-delete {
@@ -125,9 +127,3 @@ form label {
 .form-check-input {
   margin-right: 0.5rem;
 }
-
-// legend {
-//   font-weight: bold;
-//   font-size: 1.2rem;
-//   margin-bottom: 1rem;
-// }
