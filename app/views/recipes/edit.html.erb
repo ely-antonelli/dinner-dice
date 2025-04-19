@@ -23,7 +23,7 @@
       <fieldset>
         <legend><%= category.name %></legend> <!-- Display the category name -->
         <div class="form-group">
-          <% category.ingredients.each do |ingredient| %> <!-- Loop through ingredients in the category -->
+          <% category.ingredients.sort_by(&:name).each do |ingredient| %> <!-- Loop through ingredients in the category -->
             <div>
               <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "recipe_ingredient_#{ingredient.id}" %>
               <%= label_tag "recipe_ingredient_#{ingredient.id}", ingredient.name %>
@@ -32,6 +32,25 @@
         </div>
       </fieldset>
     <% end %>
+
+    <fieldset class="custom-ingredients-section">
+  <legend>Other (Custom Ingredients)</legend>
+
+  <% custom_ingredients = Ingredient.where(custom: true, user: current_user.id) %>
+
+  <% if custom_ingredients.any? %>
+    <div class="form-group">
+      <% custom_ingredients.each do |ingredient| %>
+        <div class="justify-content-start">
+          <%= check_box_tag "recipe[ingredient_ids][]", ingredient.id, @recipe.ingredients.include?(ingredient), id: "custom_ingredient_#{ingredient.id}" %>
+          <%= label_tag "custom_ingredient_#{ingredient.id}", ingredient.name %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">You don't have any custom ingredients yet.</p>
+  <% end %>
+</fieldset>
 
   <!-- Submit Button -->
   <div class= "form-submit">

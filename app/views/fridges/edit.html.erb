@@ -16,6 +16,10 @@
 
 <fieldset class="category-group">
   <legend>Other</legend>
+  <%# <div>
+  <link_to id="manage-ingredients-btn" class="manage-ingredients-link">Manage my ingredients</button>
+  <button id="delete-ingredients-btn" class="btn-delete hidden">🗑️ Delete selected</button>
+  </div> %>
 
   <div class="field">
     <%= label_tag :custom_ingredient, "Add your own custom ingredients:" %>
@@ -29,13 +33,13 @@
         <div class="custom-ingredient-item">
           <%= check_box_tag "fridge[ingredient_ids][]", ingredient.id, @fridge.ingredients.include?(ingredient), id: "custom_ingredient_#{ingredient.id}" %>
           <%= label_tag "custom_ingredient_#{ingredient.id}", ingredient.name %>
-          <%= link_to raw('<i class="fa-solid fa-trash"></i>'), delete_custom_ingredient_path(ingredient),
+          <%# <%= link_to raw('<i class="fa-solid fa-trash"></i>'), delete_custom_ingredient_path(ingredient),
                       method: :delete,
                       data: { confirm: "Supprimer #{ingredient.name} ?" },
                       class: "btn-delete" %>
         </div>
       <% end %>
-    </div>
+      </div>
   <% end %>
 </fieldset>
 
